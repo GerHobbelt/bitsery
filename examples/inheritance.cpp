@@ -110,6 +110,11 @@ using Buffer = std::vector<uint8_t>;
 using Writer = bitsery::OutputBufferAdapter<Buffer>;
 using Reader = bitsery::InputBufferAdapter<Buffer>;
 
+
+#if defined(BUILD_MONOLITHIC)
+#define main     bitsery_inheritance_main
+#endif
+
 int
 main()
 {
@@ -133,4 +138,6 @@ main()
   assert(state.first == bitsery::ReaderError::NoError && state.second);
   assert(data.x == res.x && data.y1 == res.y1 && data.getY2() == res.getY2() &&
          data.z == res.z);
+
+  return 0;
 }

@@ -55,6 +55,11 @@ using Buffer = std::array<uint8_t, 10000>;
 using OutputAdapter = bitsery::OutputBufferAdapter<Buffer>;
 using InputAdapter = bitsery::InputBufferAdapter<Buffer>;
 
+
+#if defined(BUILD_MONOLITHIC)
+#define main     bitsery_bit_packing_main
+#endif
+
 int
 main()
 {
@@ -71,4 +76,6 @@ main()
     { buffer.begin(), writtenSize }, res);
 
   assert(state.first == bitsery::ReaderError::NoError && state.second);
+
+  return 0;
 }

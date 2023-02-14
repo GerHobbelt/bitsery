@@ -37,6 +37,11 @@ using Buffer = std::vector<uint8_t>;
 using OutputAdapter = bitsery::OutputBufferAdapter<Buffer>;
 using InputAdapter = bitsery::InputBufferAdapter<Buffer>;
 
+
+#if defined(BUILD_MONOLITHIC)
+#define main     bitsery_basic_usage_main
+#endif
+
 int
 main()
 {
@@ -59,4 +64,6 @@ main()
 
   assert(state.first == bitsery::ReaderError::NoError && state.second);
   assert(data.fs == res.fs && data.i == res.i && data.e == res.e);
+
+  return 0;
 }

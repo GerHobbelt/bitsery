@@ -27,6 +27,11 @@ serialize(S& s, MyStruct& o)
   s.value8b(o.f);
 }
 
+
+#if defined(BUILD_MONOLITHIC)
+#define main     bitsery_file_stream_main
+#endif
+
 int
 main()
 {
@@ -65,4 +70,6 @@ main()
 
   assert(state.first == bitsery::ReaderError::NoError && state.second);
   assert(data.f == res.f && data.i == res.i && data.e == res.e);
+
+  return 0;
 }

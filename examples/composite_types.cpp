@@ -95,6 +95,11 @@ using Buffer = std::vector<uint8_t>;
 using OutputAdapter = bitsery::OutputBufferAdapter<Buffer>;
 using InputAdapter = bitsery::InputBufferAdapter<Buffer>;
 
+
+#if defined(BUILD_MONOLITHIC)
+#define main     bitsery_composite_types_main
+#endif
+
 int
 main()
 {
@@ -119,6 +124,8 @@ main()
 
   assert(state.first == bitsery::ReaderError::NoError && state.second);
   assert(data == res);
+
+  return 0;
 }
 #else
 #if defined(_MSC_VER)

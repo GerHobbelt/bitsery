@@ -44,6 +44,11 @@ using Buffer = std::vector<uint8_t>;
 using Writer = bitsery::OutputBufferAdapter<Buffer>;
 using Reader = bitsery::InputBufferAdapter<Buffer>;
 
+
+#if defined(BUILD_MONOLITHIC)
+#define main     bitsery_non_default_constructible_main
+#endif
+
 int
 main()
 {
@@ -71,4 +76,6 @@ main()
   assert(des.adapter().error() == bitsery::ReaderError::NoError &&
          des.adapter().isCompletedSuccessfully());
   assert(res == data);
+
+  return 0;
 }

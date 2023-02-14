@@ -105,6 +105,11 @@ using Reader = bitsery::InputBufferAdapter<Buffer>;
 // and other code will work as expected as long as it cast to proper type.
 // see context_usage.cpp for usage example
 
+
+#if defined(BUILD_MONOLITHIC)
+#define main     bitsery_raw_pointers_main
+#endif
+
 int
 main()
 {
@@ -163,4 +168,6 @@ main()
   // delete raw owning pointers
   delete data.pi1;
   delete res.pi1;
+
+  return 0;
 }

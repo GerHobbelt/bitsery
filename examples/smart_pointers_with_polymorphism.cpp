@@ -251,6 +251,11 @@ assertSameShapes(const SomeShapes& data, const SomeShapes& res)
   assert(res.refPtr == res.sharedList[1].get());
 }
 
+
+#if defined(BUILD_MONOLITHIC)
+#define main     bitsery_smart_pointers_with_polymorphism_main
+#endif
+
 int
 main()
 {

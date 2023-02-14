@@ -83,6 +83,11 @@ using Buffer = std::vector<uint8_t>;
 using OutputAdapter = bitsery::OutputBufferAdapter<Buffer>;
 using InputAdapter = bitsery::InputBufferAdapter<Buffer>;
 
+
+#if defined(BUILD_MONOLITHIC)
+#define main     bitsery_context_usage_main
+#endif
+
 int
 main()
 {
@@ -110,4 +115,6 @@ main()
     ctx, InputAdapter{ buffer.begin(), writtenSize }, res);
 
   assert(state.first == bitsery::ReaderError::NoError && state.second);
+
+  return 0;
 }
