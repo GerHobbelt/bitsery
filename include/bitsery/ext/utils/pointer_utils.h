@@ -24,6 +24,7 @@
 #define BITSERY_POINTER_UTILS_H
 
 #include "polymorphism_utils.h"
+#include <vector>
 
 namespace bitsery {
 namespace ext {
