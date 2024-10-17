@@ -70,7 +70,7 @@ using Buffer = std::vector<uint8_t>;
 using OutputAdapter = bitsery::OutputBufferAdapter<Buffer>;
 using InputAdapter = bitsery::InputBufferAdapter<Buffer>;
 
-int main() {
+int main(void) {
     MyStruct data{8941, MyEnum::V2, {15.0f, -8.5f, 0.045f}};
     MyStruct res{};
 

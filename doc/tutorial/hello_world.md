@@ -108,7 +108,7 @@ void serialize(S& s, MyStruct& o) {
   s.container4b(o.fs, 100);
 }
 
-int main() {
+int main(void) {
   MyStruct data{8941, "hello", {15.0f, -8.5f, 0.045f}};
   MyStruct res{};
 
