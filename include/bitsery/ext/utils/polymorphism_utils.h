@@ -238,7 +238,8 @@ namespace bitsery {
                 //get derived key
                 BaseToDerivedKey key{RTTI::template get<TBase>(), RTTI::template get<TBase>(obj)};
                 auto it = _baseToDerivedMap.find(key);
-                assert(it != _baseToDerivedMap.end());
+                if (it == _baseToDerivedMap.end())
+                  throw std::runtime_error("PolymorphicBaseClass not registered");
 
                 //convert derived hash to derived index, to make it work in cross-platform environment
                 auto& map = _baseToDerivedArray.find(key.baseHash)->second.derived2name;
