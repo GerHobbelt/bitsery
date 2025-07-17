@@ -29,6 +29,7 @@
 #include <bitsery/brief_syntax/list.h>
 #include <bitsery/brief_syntax/map.h>
 #include <bitsery/brief_syntax/memory.h>
+
 #include <bitsery/brief_syntax/queue.h>
 #include <bitsery/brief_syntax/set.h>
 #include <bitsery/brief_syntax/stack.h>
@@ -39,6 +40,10 @@
 #if __cplusplus > 201402L
 #include <bitsery/brief_syntax/tuple.h>
 #include <bitsery/brief_syntax/variant.h>
+#include <bitsery/brief_syntax/optional.h>
+#if __cplusplus > 202002L
+#include <bitsery/brief_syntax/bitset.h>
+#endif
 #elif defined(_MSC_VER)
 #pragma message(                                                               \
   "C++17 and /Zc:__cplusplus option is required to enable std::tuple and std::variant brief syntax tests")
@@ -489,6 +494,22 @@ TEST(BriefSyntax, StdVariant)
     "hello hello") };
   EXPECT_TRUE(procBriefSyntax(t1) == t1);
 }
+
+TEST(BriefSyntax, StdOptional)
+{
+  std::optional<uint32_t> opt{ 54654 };
+  EXPECT_TRUE(procBriefSyntax(opt) == opt);
+}
+
+#if __cplusplus > 202002L
+
+TEST(BriefSyntax, StdBitset)
+{
+  std::bitset<17> bits{ 0b10101010101010101 };
+  EXPECT_TRUE(procBriefSyntax(bits) == bits);
+}
+
+#endif
 
 #endif
 
