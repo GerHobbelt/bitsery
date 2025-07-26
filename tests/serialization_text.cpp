@@ -119,6 +119,7 @@ TEST(SerializeText, CArraySerializesTextLength)
 }
 
 #ifndef NDEBUG
+#if GTEST_HAS_DEATH_TEST
 TEST(SerializeText, WhenCArrayNotNullterminatedThenAssert)
 {
   SerializationContext ctx;
@@ -127,6 +128,7 @@ TEST(SerializeText, WhenCArrayNotNullterminatedThenAssert)
   t1[CARR_LENGTH - 1] = 'x';
   EXPECT_DEATH(ctx.createSerializer().text<2>(t1), "");
 }
+#endif
 #endif
 
 TEST(SerializeText, WhenContainerOrTextSizeIsMoreThanMaxThenInvalidDataError)

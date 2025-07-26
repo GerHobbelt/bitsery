@@ -173,6 +173,7 @@ TEST_F(SerializeExtensionPointerSerialization, WhenPointersAreNullThenIsValid)
 }
 
 #ifndef NDEBUG
+#if GTEST_HAS_DEATH_TEST
 
 TEST_F(SerializeExtensionPointerSerialization,
        WhenPointerOwnerIsNotUniqueThenAssert)
@@ -214,6 +215,7 @@ TEST_F(SerializeExtensionPointerSerialization,
   EXPECT_DEATH(ser1.ext2b(p1null, PointerObserver{ PointerType::NotNull }), "");
 }
 
+#endif
 #endif
 
 TEST_F(SerializeExtensionPointerSerialization,

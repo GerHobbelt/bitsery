@@ -237,7 +237,9 @@ TEST(InputBuffer,
   EXPECT_THAT(r1.currentReadPos(), Eq(2));
   r1.currentReadPos(4);
   EXPECT_THAT(r1.currentReadPos(), Eq(4));
+#if GTEST_HAS_DEATH_TEST
   EXPECT_DEATH(r1.readBytes<2>(res1), ""); // default config is little endian
+#endif
 }
 #endif
 

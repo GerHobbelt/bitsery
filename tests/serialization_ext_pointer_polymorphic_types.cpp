@@ -307,6 +307,7 @@ TEST_F(SerializeExtensionPointerPolymorphicTypes,
 }
 
 #ifndef NDEBUG
+#if GTEST_HAS_DEATH_TEST
 
 TEST_F(
   SerializeExtensionPointerPolymorphicTypes,
@@ -332,6 +333,7 @@ TEST_F(
   EXPECT_DEATH(createDeserializer().ext(baseRes, PointerOwner{}), "");
 }
 
+#endif
 #endif
 
 TEST_F(
