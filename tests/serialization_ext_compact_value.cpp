@@ -141,7 +141,7 @@ TYPED_TEST(SerializeExtensionCompactValueCorrectness, TestDifferentSizeValues)
   }
 }
 
-// this stucture will contain test data and result, as type paramters
+// this stucture will contain test data and result, as type parameters
 template<typename TValue,
          bool isPositiveNr,
          size_t significantBits,
